@@ -2,8 +2,10 @@
 # Test Processing II  #
 #######################
 
+import re
 
-def digits_to_words(input_string):
+
+def digits_to_words(input_string: str) -> str:
     """
     인풋으로 받는 스트링에서 숫자만 추출하여 영어 단어로 변환하여 단어들이 연결된 스트링을 반환함
     아래의 요건들을 충족시켜야함
@@ -28,7 +30,10 @@ def digits_to_words(input_string):
             >>> tp2.digits_to_words(digits_str2)
             'three one four one five'
     """
-    digit_string = None
+    num_string = ['zero', 'one', 'two', 'three',
+                  'four', 'five', 'six', 'seven', 'eight', 'nine']
+    nums = [num_string[int(n)] for n in re.findall("\d{1}", input_string)]
+    digit_string = " ".join(nums)
     return digit_string
 
 
