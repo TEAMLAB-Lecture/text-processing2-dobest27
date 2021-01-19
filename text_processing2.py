@@ -45,7 +45,7 @@ def digits_to_words(input_string: str) -> str:
 """
 
 
-def to_camel_case(underscore_str):
+def to_camel_case(underscore_str: str) -> str:
     """
     이 문제에서 첫번째 규칙 'underscore variable' 에서 두번째 규칙 'camelcase variable'으로 변환함
     * 앞과 뒤에 여러개의 'underscore'는 무시해도 된
@@ -69,5 +69,12 @@ def to_camel_case(underscore_str):
             >>> tp2.to_camel_case(underscore_str3)
             "alreadyCamel"
     """
-    camelcase_str = None
+    if underscore_str.count("_") == 0:
+        return underscore_str
+
+    words = [i for i in underscore_str.split("_") if i]
+
+    camelcase_str = words[0].lower() if len(words) else ""
+    for word in words[1:]:
+        camelcase_str += word.lower().capitalize()
     return camelcase_str
